@@ -167,7 +167,7 @@ DELETE /notes/${id}
 
 # Melhorias futuras
 
-- [ ] Refatoração e organização do código (controllers, services e repositories)
+- [x] Refatoração e organização do código (controllers, services e repositories)
 - [ ] Banco de dados PostgreSQL
 - [ ] Uso de ORM (Prisma)
 - [ ] Autenticação com JWT
