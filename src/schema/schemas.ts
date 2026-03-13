@@ -11,7 +11,7 @@ export const idSchema = z.coerce.number().int().positive()
 
 // Usuário
 export const userSchema = z.object({
-  name: z.string().min(2),
+  name: z.string().min(2).trim(),
   email: z.string().email(),
   password: z.string().min(6)
 })
@@ -22,7 +22,7 @@ export type UpdateUserDTO = z.infer<typeof updateUserSchema>
 
 // Anotações
 export const noteSchema = z.object({
-  title: z.string().min(2),
+  title: z.string().min(2).trim(),
   content: z
     .string()
     .nullable()
@@ -39,3 +39,12 @@ export const updateNoteSchema = noteSchema
   .partial()
   .transform((data) => removeUndefined(data))
 export type UpdateNoteDTO = z.infer<typeof updateNoteSchema>
+
+export const noteFilterSchema = z.object({
+  search: z.string().trim().default(''),
+  category: z.string().default(''),
+  color: z.enum(NoteColor).optional(),
+  page: z.number().int().positive().default(1),
+  limit: z.number().int().positive().default(10)
+})
+export type NoteFilterDTO = z.infer<typeof noteFilterSchema>

@@ -313,4 +313,4 @@ DELETE /users/${id}
 - [x] Validação com Zod
 - [ ] Padronização do código com ESLint e Prettier
 - [ ] Tratamento global de erros
-- [ ] Filtro de dados
+- [x] Filtro de dados e paginação

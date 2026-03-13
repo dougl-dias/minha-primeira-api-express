@@ -6,13 +6,16 @@ import {
   updateNote
 } from '../services/note.service.js'
 
-import { idSchema, noteSchema, updateNoteSchema } from '../schema/schemas.js'
+import { idSchema, noteFilterSchema, noteSchema, updateNoteSchema } from '../schema/schemas.js'
 
 import type { Request, Response } from 'express'
 
 const getAll = async (req: Request, res: Response) => {
   try {
-    const response = await findAllNotes()
+    const filters = noteFilterSchema.parse(req.query)
+
+    const response = await findAllNotes(filters)
+
     return res.status(200).json(response)
   } catch (error) {
     console.log(error)
